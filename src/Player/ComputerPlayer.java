@@ -15,6 +15,7 @@ public class ComputerPlayer extends Player{
         System.out.println(" _________Computer's turn__________");
         int guess = random.nextInt(1, 10);
         System.out.println("The computer guess is number " + guess);
+        guesses.add(guess);
         return guess;
     }
 }
