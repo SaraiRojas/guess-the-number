@@ -10,6 +10,10 @@ public abstract class Player {
 
     public abstract int makeGuess();
 
+    public void setName(String name){
+        this.name = name;
+    }
+
     public String getName(){
         return this.name;
     }

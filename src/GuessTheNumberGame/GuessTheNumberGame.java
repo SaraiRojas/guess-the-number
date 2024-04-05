@@ -1,8 +1,10 @@
 package GuessTheNumberGame;
 
+import java.util.Objects;
 import java.util.Random;
 import Player.Player;
 import Player.HumanPlayer;
+import Player.ComputerPlayer;
 
 public class GuessTheNumberGame {
     private static final Random random = new Random();
@@ -10,28 +12,44 @@ public class GuessTheNumberGame {
 
     public static void main(String[] args) {
 
-        Player playerTest = new HumanPlayer();
+        Player humanPlayer = new HumanPlayer();
+        Player computerPlayer = new ComputerPlayer();
         boolean doesPlayerGuess;
+        boolean isHumanPlayerTurn = true;
 
-        targetNumber = random.nextInt(1, 10);
+        generateRandomNumber();
 
         do {
-            doesPlayerGuess = checkGuess(playerTest);
+            if(isHumanPlayerTurn){
+                doesPlayerGuess = checkGuess(humanPlayer);
+            }else{
+                doesPlayerGuess = checkGuess(computerPlayer);
+            }
+
+            isHumanPlayerTurn = !isHumanPlayerTurn;
+
         } while (!doesPlayerGuess);
+    }
+
+    private static void generateRandomNumber() {
+        GuessTheNumberGame.targetNumber = random.nextInt(1, 10);
     }
 
     private static boolean checkGuess(Player player) {
         int playerGuess = player.makeGuess();
+        boolean isGuessCorrect = playerGuess == targetNumber;
 
-        if(!(playerGuess == targetNumber)){
+        if(!isGuessCorrect){
             boolean isPlayerGuessBiggerThanRandomNumber = playerGuess > targetNumber;
             String biggerOrSmaller = isPlayerGuessBiggerThanRandomNumber ? "bigger" : "smaller";
-            String hintMessage = "Your guess is " + biggerOrSmaller + " than the target value";
+            boolean isComputerPlayer = Objects.equals(player.getName(), "Computer");
+            String whichPlayer = isComputerPlayer ? player.getName() : "Your";
+            String hintMessage =  whichPlayer + " guess is " + biggerOrSmaller + " than the target value";
             System.out.println(hintMessage);
         }else{
-            System.out.println("You guess correctly!!!");
+            System.out.println(player.getName() + " guessed correctly!!!");
         }
 
-        return playerGuess == targetNumber;
+        return isGuessCorrect;
     }
 }
