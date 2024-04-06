@@ -18,4 +18,5 @@ public class ComputerPlayer extends Player{
         guesses.add(guess);
         return guess;
     }
+
 }
