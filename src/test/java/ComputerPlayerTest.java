@@ -1,6 +1,4 @@
-package test;
-
-import Player.ComputerPlayer;
+import com.Player.ComputerPlayer;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

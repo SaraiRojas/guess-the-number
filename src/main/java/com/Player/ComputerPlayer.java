@@ -1,8 +1,8 @@
-package Player;
+package com.Player;
 
 import java.util.Random;
 
-public class ComputerPlayer extends Player{
+public class ComputerPlayer extends Player {
 
     private static final Random random = new Random();
 

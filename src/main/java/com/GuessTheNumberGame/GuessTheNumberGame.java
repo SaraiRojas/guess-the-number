@@ -1,10 +1,10 @@
-package GuessTheNumberGame;
+package com.GuessTheNumberGame;
 
 import java.util.Objects;
 import java.util.Random;
-import Player.Player;
-import Player.HumanPlayer;
-import Player.ComputerPlayer;
+import com.Player.Player;
+import com.Player.HumanPlayer;
+import com.Player.ComputerPlayer;
 
 public class GuessTheNumberGame {
     private static final Random random = new Random();
